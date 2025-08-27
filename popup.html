@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 280px;
+      margin: 0;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      background: white;
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e1e5e9;
+    }
+    
+    .header h1 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #0073b1;
+    }
+    
+    .setting {
+      margin-bottom: 16px;
+    }
+    
+    .setting label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 8px;
+    }
+    
+    .setting input[type="checkbox"] {
+      margin: 0;
+    }
+    
+    .company-section h3 {
+      margin: 0 0 8px 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+    }
+    
+    .company-input {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+    
+    .company-input input {
+      flex: 1;
+      padding: 6px 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    
+    .company-input input:focus {
+      outline: none;
+      border-color: #0073b1;
+    }
+    
+    .company-input button {
+      padding: 6px 10px;
+      background: #0073b1;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    
+    .company-input button:hover {
+      background: #005885;
+    }
+    
+    .company-list {
+      max-height: 100px;
+      overflow-y: auto;
+      border: 1px solid #e1e5e9;
+      border-radius: 4px;
+      background: #f8f9fa;
+    }
+    
+    .company-list:empty::after {
+      content: 'No companies added';
+      display: block;
+      padding: 12px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 12px;
+      font-style: italic;
+    }
+    
+    .company-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 8px;
+      font-size: 13px;
+      border-bottom: 1px solid #e9ecef;
+    }
+    
+    .company-item:last-child {
+      border-bottom: none;
+    }
+    
+    .remove-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      padding: 2px 6px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+    
+    .remove-btn:hover {
+      background: #c82333;
+    }
+    
+    .scan-section {
+      margin: 16px 0;
+    }
+    
+    .scan-button {
+      width: 100%;
+      padding: 8px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    
+    .scan-button:hover:not(:disabled) {
+      background: #218838;
+    }
+    
+    .scan-button:disabled {
+      background: #6c757d;
+      cursor: not-allowed;
+    }
+    
+    .stats {
+      margin-top: 12px;
+      padding: 8px;
+      background: #f8f9fa;
+      border-radius: 4px;
+      font-size: 12px;
+      text-align: center;
+      border: 1px solid #e9ecef;
+    }
+    
+    .stats.success {
+      background: #d4edda;
+      border-color: #c3e6cb;
+      color: #155724;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-right: 6px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>LinkedIn Job Filter</h1>
+  </div>
+  
+  <div class="setting">
+    <label>
+      <input type="checkbox" id="hidePromoted" checked>
+      Hide promoted jobs
+    </label>
+  </div>
+  
+  <div class="company-section">
+    <h3>Blocked Companies</h3>
+    <div class="company-input">
+      <input type="text" id="companyInput" placeholder="Company name">
+      <button id="addCompany">Add</button>
+    </div>
+    <div class="company-list" id="companyList"></div>
+  </div>
+  
+  <div class="scan-section">
+    <button id="scanAllJobs" class="scan-button">
+      <span class="scan-text">Scan All Jobs</span>
+      <span class="scan-progress" style="display: none;">
+        <span class="spinner"></span>Scanning...
+      </span>
+    </button>
+  </div>
+  
+  <div class="stats" id="stats">
+    Ready to scan
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

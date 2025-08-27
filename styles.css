@@ -1,0 +1,276 @@
+.linkedin-filter-counter {
+  background: #0073b1;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.linkedin-filter-hidden {
+  display: none !important;
+}
+
+.linkedin-filter-dimmed {
+  opacity: 0.3 !important;
+  filter: grayscale(70%) !important;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Fade effect for jobs being hidden */
+.linkedin-filter-hiding {
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+/* Floating Button */
+.linkedin-filter-floating-btn {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #0073b1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0, 115, 177, 0.3);
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.linkedin-filter-floating-btn:hover {
+  background: #005885;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 115, 177, 0.4);
+}
+
+/* Button States */
+.linkedin-filter-floating-btn.scanning {
+  background: #ffc107;
+  animation: pulse 2s infinite;
+}
+
+.linkedin-filter-floating-btn.complete {
+  background: #28a745;
+}
+
+.linkedin-filter-floating-btn.error {
+  background: #dc3545;
+}
+
+.linkedin-filter-floating-btn.scanning:hover,
+.linkedin-filter-floating-btn.complete:hover,
+.linkedin-filter-floating-btn.error:hover {
+  transform: scale(1.1);
+}
+
+/* Scanning Spinner */
+.scan-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+  }
+}
+
+/* Floating Popup */
+.linkedin-filter-floating-popup {
+  position: fixed;
+  width: 320px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  z-index: 10001;
+}
+
+.floating-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  border-radius: 12px 12px 0 0;
+}
+
+.floating-popup-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0073b1;
+}
+
+.floating-popup-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-popup-close:hover {
+  color: #333;
+}
+
+.floating-popup-content {
+  padding: 20px;
+}
+
+.floating-popup-content .setting {
+  margin-bottom: 16px;
+}
+
+.floating-popup-content .setting label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.floating-popup-content .setting input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.floating-popup-content .hide-mode-toggle {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.floating-popup-content .radio-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.floating-popup-content .radio-label input[type="radio"] {
+  margin-right: 6px;
+}
+
+.floating-popup-content .company-section {
+  margin-bottom: 20px;
+}
+
+.floating-popup-content .company-section h4 {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.floating-popup-content .company-input {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.floating-popup-content .company-input input {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.floating-popup-content .company-input button {
+  margin-left: 8px;
+  padding: 6px 12px;
+  background: #0073b1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.floating-popup-content .company-list {
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.floating-popup-content .company-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.floating-popup-content .remove-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 2px 6px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+.floating-popup-content .scan-section {
+  margin-bottom: 16px;
+}
+
+.floating-popup-content .scan-button {
+  width: 100%;
+  padding: 10px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.floating-popup-content .scan-button:hover {
+  background: #218838;
+}
+
+.floating-popup-content .scan-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.floating-popup-content .scan-progress {
+  font-size: 12px;
+}
+
+.floating-popup-content .stats {
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  font-size: 12px;
+  text-align: center;
+}
